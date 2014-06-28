@@ -1,5 +1,6 @@
 define(function (require) {
     require('jquery');
+    require('less!app/home/about/about');
     var aboutHtml = require('text!app/home/about/about.html');
 
     function render(container) {

@@ -10,6 +10,7 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "requirejs-text": "~2.0.12",
-    "require-css": "~0.1.4"
+    "require-css": "~0.1.4",
+    "require-less": "~0.1.2"
   }
 }
