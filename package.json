@@ -1,0 +1,16 @@
+{
+  "name": "jsdevenv-require",
+  "version": "0.1.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/larsthorup/jsdevenv-require.git"
+  },
+  "author": "Lars Thorup <lars@zealake.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-requirejs": "~0.4.4",
+    "grunt-contrib-copy": "~0.5.0"
+  }
+}
