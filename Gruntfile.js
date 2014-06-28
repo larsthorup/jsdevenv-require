@@ -31,7 +31,16 @@ module.exports = function (grunt) {
         options: {
             baseUrl: 'src',
             mainConfigFile: 'src/config/require.conf.js',
-            optimize: 'none'
+            optimize: 'none',
+
+            // Note: "text" module not used in production as all text is bundled
+            stubModules: ['text'],
+
+            // Note: "css" module not used in production as all css is bundled
+            exclude: ['require-css/normalize'],
+            pragmasOnSave: {
+                excludeRequireCss: true
+            }
         },
 
         // Note: bundle the "main" module and every module referenced recursively by it
@@ -41,14 +50,7 @@ module.exports = function (grunt) {
                 out: 'output/dist/lib/require.js',
 
                 // Note: explicitly include necessary files that are not explicitly referenced
-                include: ['lib/require', 'config/require.conf'],
-
-                // Note: Exclude content of modules only used during development and bundling
-                stubModules: ['text'],
-                exclude: ['require-css/normalize'],
-                pragmasOnSave: {
-                    excludeRequireCss: true
-                }
+                include: ['lib/require', 'config/require.conf']
             }
         },
 
@@ -56,7 +58,8 @@ module.exports = function (grunt) {
         about: {
             options: {
                 name: 'app/home/about/about',
-                out: 'output/dist/app/home/about/about.js'
+                out: 'output/dist/app/home/about/about.js',
+                exclude: ['jquery', 'text'] // Note: exclude dependent modules already present in main
             }
         }
     };
