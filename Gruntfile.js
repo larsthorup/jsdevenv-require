@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     };
 
     // convenience
-    grunt.registerTask('default', ['bundle']);
+    grunt.registerTask('default', ['test', 'bundle']);
 
 
     // bundle
@@ -69,6 +69,32 @@ module.exports = function (grunt) {
         }
     };
     grunt.registerTask('bundle', ['copy:dist', 'requirejs']);
+
+
+    // test
+    grunt.loadNpmTasks('grunt-karma');
+    gruntConfig.karma = {
+        options: {
+            basePath: '.',
+            frameworks: ['mocha', 'requirejs'],
+            files: [
+                'src/test/karma-test-main.js',
+                'src/test/bind.js', // Note: polyfill for the benefit of less on Phantom
+                {pattern: 'src/**/*.*', included: false},
+                {pattern: 'bower_components/**/*.js', included: false}
+            ],
+            port: 9876, // Note: web server port
+            colors: true, // Note: enable / disable colors in the output (reporters and logs)
+            logLevel: 'INFO'
+        },
+        test: {
+            reporters: ['progress'],
+            browsers: ['PhantomJS'],
+            autoWatch: false,
+            singleRun: true
+        }
+    };
+    grunt.registerTask('test', ['karma:test']);
 
     // grunt
     grunt.initConfig(gruntConfig);
