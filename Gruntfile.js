@@ -32,7 +32,8 @@ module.exports = function (grunt) {
                 mainConfigFile: 'src/config/require.conf.js', // Note: use shared configuration
                 name: 'app/main', // Note: bundle main and every module referenced recursively by it
                 include: ['lib/require', 'config/require.conf'], // Note: include the files not explicitly referenced
-                optimize: 'none',
+                stubModules: ['config/require.conf', 'text'], // Exclude content of modules only used during development and bundling
+                // optimize: 'none',
                 out: 'output/dist/lib/require.js'
             }
         }
