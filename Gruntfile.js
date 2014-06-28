@@ -29,17 +29,7 @@ module.exports = function (grunt) {
         bundle: {
             options: {
                 baseUrl: 'src',
-
-                // ToDo: include require.conf.js
-                paths: {
-                    'jquery': '../lib/jquery'
-                },
-                shim: {
-                    'jquery': {
-                        exports: '$'
-                    }
-                },
-
+                mainConfigFile: 'src/require.conf.js',
                 name: 'main', // Note: bundle main and every module referenced recursively by it
                 include: ['require.js', 'require.conf'], // Note: include the files not explicitly referenced
                 // optimize: 'none',
