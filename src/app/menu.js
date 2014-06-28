@@ -1,3 +1,4 @@
 define(function (require) {
-    console.log('hej');
+    var $ = require('jquery');
+    $('<p>hej</p>').appendTo('body');
 });

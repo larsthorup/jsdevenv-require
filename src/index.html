@@ -1,6 +1,12 @@
 <html>
 <head>
-    <script data-main="main" src="require.js"></script>
+    <script src="require.js"></script>
+    <script id="require-bootstrap">
+        // Note: used instead of data-main to allow sharing of config with tests
+        require(['require.conf'], function () {
+            require(['main']);
+        });
+    </script>
 </head>
 <body>
 </body>
