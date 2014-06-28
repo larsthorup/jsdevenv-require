@@ -1,0 +1,13 @@
+{
+  "name": "jsdevenv-require",
+  "version": "0.1.1",
+  "homepage": "https://github.com/larsthorup/jsdevenv-require",
+  "authors": [
+    "Lars Thorup <lars@zealake.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
