@@ -1,9 +1,9 @@
 <html>
 <head>
-    <script src="require.js"></script>
+    <script src="lib/require.js"></script>
     <script id="require-bootstrap">
         // Note: used instead of data-main to allow sharing of config with tests
-        require(['require.conf'], function () {
+        require(['config/require.conf'], function () {
             require(['app/main']);
         });
     </script>

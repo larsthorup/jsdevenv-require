@@ -1,1 +1,1 @@
-require(['app/home/menu']);
+require(['app/home/menu/menu']);
