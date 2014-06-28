@@ -3,5 +3,10 @@ define(function (require) {
     require('css!app/home/menu/menu');
     var menuHtml = require('text!app/home/menu/menu.html');
 
-    $(menuHtml).appendTo('body');
+    var menu = $(menuHtml);
+    menu.appendTo('body');
+    menu.find('.about').on('click', function () {
+        // Note: this is a dynamic/lazy invocation of require, so that module will not get bundled with main
+        require(['app/home/about/about']);
+    });
 });

@@ -2,3 +2,8 @@
     font-family: sans-serif;
     color: blue;
 }
+
+.menu li {
+    list-style: none;
+}
+

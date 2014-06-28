@@ -26,16 +26,21 @@ module.exports = function (grunt) {
     };
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     gruntConfig.requirejs = {
-        bundle: {
+
+        // Note: shared configuration for all bundled modules
+        options: {
+            baseUrl: 'src',
+            mainConfigFile: 'src/config/require.conf.js',
+            optimize: 'none'
+        },
+
+        // Note: bundle the "main" module and every module referenced recursively by it
+        main: {
             options: {
-                baseUrl: 'src',
-                // Note: use shared configuration
-                mainConfigFile: 'src/config/require.conf.js',
-
-                // Note: bundle main and every module referenced recursively by it
                 name: 'app/main',
+                out: 'output/dist/lib/require.js',
 
-                // Note: include the files not explicitly referenced
+                // Note: explicitly include necessary files that are not explicitly referenced
                 include: ['lib/require', 'config/require.conf'],
 
                 // Note: Exclude content of modules only used during development and bundling
@@ -43,14 +48,19 @@ module.exports = function (grunt) {
                 exclude: ['require-css/normalize'],
                 pragmasOnSave: {
                     excludeRequireCss: true
-                },
+                }
+            }
+        },
 
-                optimize: 'none',
-                out: 'output/dist/lib/require.js'
+        // Note: bundle the "about" module and every module referenced recursively by it
+        about: {
+            options: {
+                name: 'app/home/about/about',
+                out: 'output/dist/app/home/about/about.js'
             }
         }
     };
-    grunt.registerTask('bundle', ['copy:dist', 'requirejs:bundle']);
+    grunt.registerTask('bundle', ['copy:dist', 'requirejs']);
 
     // grunt
     grunt.initConfig(gruntConfig);
