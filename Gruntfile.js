@@ -13,6 +13,16 @@ module.exports = function (grunt) {
     // bundle
     grunt.loadNpmTasks('grunt-contrib-copy');
     gruntConfig.copy = {
+        postinstall: {
+            files: [
+                {
+                    expand: true,
+                    cwd: 'bower_components/requirejs',
+                    src: ['require.js'],
+                    dest: 'src/lib'
+                }
+            ]
+        },
         dist: {
             files: [
                 {

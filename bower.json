@@ -1,19 +1,20 @@
 {
-  "name": "jsdevenv-require",
-  "version": "0.1.1",
-  "homepage": "https://github.com/larsthorup/jsdevenv-require",
-  "authors": [
-    "Lars Thorup <lars@zealake.com>"
-  ],
-  "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "jquery": "~2.1.1",
-    "requirejs-text": "~2.0.12",
-    "require-css": "~0.1.4",
-    "require-less": "~0.1.2"
-  },
-  "devDependencies": {
-    "chai": "~1.9.1"
-  }
+    "name": "jsdevenv-require",
+    "version": "0.1.1",
+    "homepage": "https://github.com/larsthorup/jsdevenv-require",
+    "authors": [
+        "Lars Thorup <lars@zealake.com>"
+    ],
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "requirejs": "~2.1.14",
+        "requirejs-text": "~2.0.12",
+        "require-css": "~0.1.4",
+        "require-less": "~0.1.2",
+        "jquery": "~2.1.1"
+    },
+    "devDependencies": {
+        "chai": "~1.9.1"
+    }
 }
