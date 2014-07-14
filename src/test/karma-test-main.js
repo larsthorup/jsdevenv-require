@@ -2,7 +2,9 @@ var deps = [];
 for (var file in window.__karma__.files) {
     if (window.__karma__.files.hasOwnProperty(file)) {
         var dep = null;
-        if (/\.test\.js$/.test(file)) {
+        if (/^\/base\/src\/app\/main\.js$/.test(file)) {
+            // Note: exclude main.js to avoid bootstrapping the app when running tests
+        } else if (/\.test\.js$/.test(file)) {
             // Note: test file
             dep = file;
         } else {
