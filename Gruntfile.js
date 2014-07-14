@@ -119,6 +119,7 @@ module.exports = function (grunt) {
     // cover
     gruntConfig.karma.cover = {
         preprocessors: {
+            // Note: instrument all code files, but not test files
             'src/app/**/!(*test).js': ['coverage']
         },
         reporters: ['progress', 'coverage'],
