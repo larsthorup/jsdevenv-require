@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     };
 
     // convenience
-    grunt.registerTask('default', ['test', 'bundle']);
+    grunt.registerTask('default', ['cover', 'bundle']);
 
 
     // bundle
@@ -93,18 +93,40 @@ module.exports = function (grunt) {
                 {pattern: 'src/**/*.*', included: false},
                 {pattern: 'bower_components/**/*.js', included: false}
             ],
+            coverageReporter: {
+                reporters: [
+                    {type: 'lcov'},
+                    {type: 'html'},
+                    {type: 'cobertura'},
+                    {type: 'text-summary'}
+                ],
+                dir: 'output/coverage'
+            },
             port: 9876, // Note: web server port
             colors: true, // Note: enable / disable colors in the output (reporters and logs)
             logLevel: 'INFO'
-        },
-        test: {
-            reporters: ['progress'],
-            browsers: ['PhantomJS'],
-            autoWatch: false,
-            singleRun: true
         }
     };
+    gruntConfig.karma.test = {
+        reporters: ['progress'],
+        browsers: ['PhantomJS'],
+        autoWatch: false,
+        singleRun: true
+    };
     grunt.registerTask('test', ['karma:test']);
+
+
+    // cover
+    gruntConfig.karma.cover = {
+        preprocessors: {
+            'src/app/**/!(*test).js': ['coverage']
+        },
+        reporters: ['progress', 'coverage'],
+        browsers: ['PhantomJS'],
+        autoWatch: false,
+        singleRun: true
+    };
+    grunt.registerTask('cover', ['karma:cover']);
 
     // grunt
     grunt.initConfig(gruntConfig);
