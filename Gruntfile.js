@@ -104,6 +104,7 @@ module.exports = function (grunt) {
             },
             port: 9876, // Note: web server port
             colors: true, // Note: enable / disable colors in the output (reporters and logs)
+            // logLevel: 'DEBUG'
             logLevel: 'INFO'
         }
     };
