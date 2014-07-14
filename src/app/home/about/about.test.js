@@ -1,5 +1,7 @@
-define(['chai', 'jquery', 'app/home/about/about'], function (chai, $, about) {
-    var expect = chai.expect;
+define(function (require) {
+    var expect = require('chai').expect;
+    var $ = require('jquery');
+    var about = require('app/home/about/about');
 
     describe('about', function () {
         it('renders', function () {

@@ -1,3 +1,4 @@
 define(function (require) {
-    require('app/home/menu/menu');
+    var menu = require('app/home/menu/menu');
+    menu.render($('body'));
 });
