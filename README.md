@@ -13,7 +13,9 @@ Features:
 
 Demo:
 
+    npm install bower -g
     npm install grunt-cli -g
+
     npm install
     grunt
     open output/dist/index.html
