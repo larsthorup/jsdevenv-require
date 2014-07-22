@@ -13,32 +13,12 @@ module.exports = function (grunt) {
     // bundle
     grunt.loadNpmTasks('grunt-contrib-copy');
     gruntConfig.copy = {
-        postinstall: {
-            files: [
-                {
-                    expand: true,
-                    cwd: 'bower_components/requirejs',
-                    src: ['require.js'],
-                    dest: 'src/lib'
-                }
-            ]
-        },
-        dist: {
-            files: [
-                {
-                    expand: true,
-                    cwd: '.',
-                    src: ['bower.json', 'LICENSE'],
-                    dest: 'output/dist'
-                },
-                {
-                    expand: true,
-                    cwd: 'src',
-                    src: ['index.html'],
-                    dest: 'output/dist'
-                }
-            ]
-        }
+        postinstall: { files: [ { cwd: 'bower_components/requirejs', src: ['require.js'], dest: 'src/lib', expand: true } ] },
+        dist: { files: [ { cwd: 'src', src: ['index.html'], dest: 'output/dist', expand: true } ] },
+        release: { files: [
+            { cwd: '.', src: ['bower.json', 'LICENSE'], dest: 'output/dist', expand: true },
+            { cwd: 'output/dist', src: ['**/*'], dest: 'output/release', expand: true }
+        ] }
     };
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     gruntConfig.requirejs = {
@@ -137,18 +117,42 @@ module.exports = function (grunt) {
     grunt.registerTask('cover', ['karma:cover']);
 
 
-    // ToDo: release
+    // release
     grunt.loadNpmTasks('grunt-bump');
     gruntConfig.bump = {
         options: {
-            files: ['package.json', 'bower.json']
+            files: ['package.json', 'bower.json'],
+            updateConfigs: ['pkg']
         }
     };
-    // clone dist repo (grunt-git or grunt-shell)
-    // grunt test bundle
-    // commit and push and tag dist repo (grunt-git or grunt-shell)
-    // commit and push repo (grunt bump-commit)
-    // grunt.registerTask('release', ['bump-only', 'clone-dist', 'test', 'bundle', 'push-dist', 'bump-commit']);
+    grunt.loadNpmTasks('grunt-shell');
+    gruntConfig.shell = {
+        cloneRelease: {
+            command: '(rm -rf output/release && git clone https://github.com/larsthorup/jsdevenv-require-bower.git output/release)'
+        },
+        commitRelease: {
+            // ToDo: how to remove files no longer there?
+            command: '(cd output/release && git add * && git commit -m "Release <%=pkg.version%>")'
+        },
+        tagRelease: {
+            command: '(cd output/release && git tag v<%=pkg.version%> -a -m "Release <%=pkg.version%>")'
+        },
+        pushRelease: {
+            command: '(cd output/release && git push origin master --tags)'
+        }
+    };
+    grunt.registerTask('release', [
+        'bump-only',
+        'shell:cloneRelease',
+        'test',
+        'bundle',
+        'copy:release',
+        'shell:commitRelease',
+        'shell:tagRelease',
+        'shell:pushRelease',
+        // 'bump-commit',
+        // 'bowerRegister'
+    ]);
 
     // grunt
     grunt.initConfig(gruntConfig);
