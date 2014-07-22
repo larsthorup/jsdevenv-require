@@ -27,6 +27,12 @@ module.exports = function (grunt) {
             files: [
                 {
                     expand: true,
+                    cwd: '.',
+                    src: ['bower.json', 'LICENSE'],
+                    dest: 'output/dist'
+                },
+                {
+                    expand: true,
                     cwd: 'src',
                     src: ['index.html'],
                     dest: 'output/dist'
@@ -129,6 +135,20 @@ module.exports = function (grunt) {
         singleRun: true
     };
     grunt.registerTask('cover', ['karma:cover']);
+
+
+    // ToDo: release
+    grunt.loadNpmTasks('grunt-bump');
+    gruntConfig.bump = {
+        options: {
+            files: ['package.json', 'bower.json']
+        }
+    };
+    // clone dist repo (grunt-git or grunt-shell)
+    // grunt test bundle
+    // commit and push and tag dist repo (grunt-git or grunt-shell)
+    // commit and push repo (grunt bump-commit)
+    // grunt.registerTask('release', ['bump-only', 'clone-dist', 'test', 'bundle', 'push-dist', 'bump-commit']);
 
     // grunt
     grunt.initConfig(gruntConfig);
