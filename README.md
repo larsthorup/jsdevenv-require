@@ -1,6 +1,9 @@
 jsdevenv-require
 ================
 
+[![Dependency Status](https://david-dm.org/larsthorup/jsdevenv-require.png)](https://david-dm.org/larsthorup/jsdevenv-require#info=dependencies)
+[![devDependency Status](https://david-dm.org/larsthorup/jsdevenv-require/dev-status.png)](https://david-dm.org/larsthorup/jsdevenv-require#info=devDependencies)
+
 Configuration of RequireJS for bundling
 
 Features:
