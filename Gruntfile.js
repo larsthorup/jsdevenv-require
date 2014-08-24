@@ -8,6 +8,7 @@ module.exports = function (grunt) {
 
     // convenience
     grunt.registerTask('default', ['cover', 'bundle']);
+    grunt.registerTask('ci', ['cover', 'bundle']);
 
 
     // bundle

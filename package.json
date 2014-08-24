@@ -22,6 +22,7 @@
         "bower": "^1.3.6"
     },
     "scripts": {
-        "postinstall": "node node_modules/bower/bin/bower install && grunt copy:postinstall"
+        "postinstall": "node node_modules/bower/bin/bower install && grunt copy:postinstall",
+        "test": "grunt ci"
     }
 }
