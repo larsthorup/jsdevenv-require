@@ -16,6 +16,6 @@
         "larsthorup-jsdevenv-bower": "~0.1.2"
     },
     "devDependencies": {
-        "chai": "~1.9.1"
+        "chai": "~1.10.0"
     }
 }
