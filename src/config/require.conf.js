@@ -2,14 +2,11 @@ require.config({
     paths: {
         'jquery': '../bower_components/jquery/dist/jquery',
         'text': '../bower_components/requirejs-text/text',
-        'require-css': '../bower_components/require-css',
-        'require-less': '../bower_components/require-less',
-        'newsfeed': '../bower_components/larsthorup-jsdevenv-bower'
+        'require-css': '../bower_components/require-css'
     },
     map: {
         '*': {
-            'css': 'require-css/css',
-            'less': 'require-less/less'
+            'css': 'require-css/css'
         }
     },
     shims: {

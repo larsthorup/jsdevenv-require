@@ -7,9 +7,21 @@ module.exports = function (grunt) {
     };
 
     // convenience
-    grunt.registerTask('default', ['cover', 'bundle']);
-    grunt.registerTask('ci', ['cover', 'bundle']);
+    grunt.registerTask('default', ['less', 'cover', 'bundle']);
+    grunt.registerTask('ci', ['less', 'cover', 'bundle']);
 
+
+    // less
+    grunt.loadNpmTasks('grunt-contrib-less');
+    gruntConfig.less = {
+        all: {
+            files: [{
+                expand: true,
+                src: ['src/**/*.less'],
+                ext: '.css'
+            }]
+        }
+    };
 
     // bundle
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -42,10 +54,9 @@ module.exports = function (grunt) {
                 // Note: explicitly include necessary files that are not explicitly referenced
                 include: ['lib/require', 'config/require.conf'],
 
-                // Note: "text" and "less" modules not used in production as all text and css is bundled
+                // Note: "text" modules not used in production as all text and css is bundled
                 stubModules: [
-                    'text',
-                    'require-less/less'
+                    'text'
                 ]
             }
         },
@@ -57,7 +68,7 @@ module.exports = function (grunt) {
                 out: 'output/dist/app/home/about/about.js',
 
                 // Note: exclude dependent modules already present in main
-                exclude: ['jquery', 'text', 'less']
+                exclude: ['jquery', 'text']
             }
         }
     };

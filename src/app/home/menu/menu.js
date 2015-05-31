@@ -1,6 +1,6 @@
 define(function (require) {
     var $ = require('jquery');
-    require('less!app/home/menu/menu');
+    require('css!app/home/menu/menu');
     var menuHtml = require('text!app/home/menu/menu.html');
 
     function render(container) {
