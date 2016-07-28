@@ -79,7 +79,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     gruntConfig.karma = {
         options: {
-            basePath: '.',
+            basePath: './',
             frameworks: ['mocha', 'requirejs'],
             files: [
                 'src/test/karma-test-main.js',
