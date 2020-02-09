@@ -5,6 +5,8 @@ jsdevenv-require
 [![Coverage Status](https://coveralls.io/repos/larsthorup/jsdevenv-require/badge.png?branch=master)](https://coveralls.io/r/larsthorup/jsdevenv-require?branch=master)
 [![devDependency Status](https://david-dm.org/larsthorup/jsdevenv-require/dev-status.png)](https://david-dm.org/larsthorup/jsdevenv-require#info=devDependencies)
 
+Note: this project is deprecated, because PhantomJS has been [deprecated](https://github.com/ariya/phantomjs/issues/15344).
+
 Configuration of RequireJS for bundling
 
 Features:
